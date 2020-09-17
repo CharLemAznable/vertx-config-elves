@@ -11,6 +11,7 @@ import java.util.Objects;
 
 import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
 import static org.apache.commons.lang3.StringUtils.equalsAnyIgnoreCase;
+import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.n3r.diamond.client.impl.DiamondUtils.parseObject;
 import static org.n3r.diamond.client.impl.DiamondUtils.parseStoneToProperties;
 
@@ -62,17 +63,29 @@ public final class VertxDiamondElf {
         return vertxOptions;
     }
 
-    @SuppressWarnings("Duplicates")
     private static Object parsePrimitive(Class<?> rt, String value) {
         if (rt == boolean.class) return equalsAnyIgnoreCase(value, "yes", "true", "on", "y");
-        if (rt == short.class) return Short.parseShort(value);
         if (rt == int.class) return Integer.parseInt(value);
         if (rt == long.class) return Long.parseLong(value);
-        if (rt == float.class) return Float.parseFloat(value);
-        if (rt == double.class) return Double.parseDouble(value);
-        if (rt == byte.class) return Byte.parseByte(value);
-        if (rt == char.class) return value.length() > 0 ? value.charAt(0) : '\0';
         return null;
+    }
+
+    static String getVertxClusterConfigStoneByApplyParams(String[] params) {
+        String group = null;
+        String dataId = null;
+
+        if (params.length == 2) {
+            // @DiamondHazelcastClusterManager(group, dataId)
+            group = params[0];
+            dataId = params[1];
+        } else if (params.length == 1) {
+            // @DiamondHazelcastClusterManager(dataId)
+            dataId = params[0];
+        }
+        // @DiamondHazelcastClusterManager() or error params
+        if (isBlank(dataId)) return null;
+
+        return getVertxClusterConfigStone(group, dataId);
     }
 
     private VertxDiamondElf() {}
