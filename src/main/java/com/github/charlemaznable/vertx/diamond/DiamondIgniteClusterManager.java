@@ -3,7 +3,6 @@ package com.github.charlemaznable.vertx.diamond;
 import io.vertx.spi.cluster.ignite.IgniteClusterManager;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
-import org.apache.ignite.IgniteCheckedException;
 import org.apache.ignite.internal.IgnitionEx;
 import org.apache.ignite.internal.util.typedef.F;
 import org.n3r.diamond.client.cache.ParamsAppliable;
@@ -28,7 +27,7 @@ public class DiamondIgniteClusterManager extends IgniteClusterManager implements
         try {
             val cfg = F.first(IgnitionEx.loadConfigurations(inputStream).get1());
             on(this).set("cfg", cfg).call("setNodeID", cfg);
-        } catch (IgniteCheckedException e) {
+        } catch (Exception e) {
             log.error("Failed to set config", e);
         }
     }
