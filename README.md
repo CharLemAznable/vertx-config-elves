@@ -37,3 +37,27 @@
   <version>0.0.1-SNAPSHOT</version>
 </dependency>
 ```
+
+##### DiamondHazelcastClusterManager
+
+使用Diamond配置```HazelcastClusterManager```.
+
+添加Diamond配置```{group: "group, 默认为VertxClusterConfig", dataId: "dataId"}```, 内容为```cluster.xml```或```cluster.yaml```文件的内容.
+
+配置VertxOptions添加```clusterManager=@com.github.charlemaznable.vertx.diamond.DiamondHazelcastClusterManager(group, dataId)```, 其中group不提供则使用默认```VertxClusterConfig```.
+
+##### DiamondIgniteClusterManager
+
+使用Diamond配置```IgniteClusterManager```.
+
+添加Diamond配置```{group: "group, 默认为VertxClusterConfig", dataId: "dataId"}```, 内容为```ignite.xml```文件的内容.
+
+配置VertxOptions添加```clusterManager=@com.github.charlemaznable.vertx.diamond.DiamondIgniteClusterManager(group, dataId)```, 其中group不提供则使用默认```VertxClusterConfig```.
+
+##### DiamondZookeeperClusterManager
+
+使用Diamond配置```ZookeeperClusterManager```.
+
+添加Diamond配置```{group: "group, 默认为VertxClusterConfig", dataId: "dataId"}```, 内容为```zookeeper.json```文件的内容.
+
+配置VertxOptions添加```clusterManager=@com.github.charlemaznable.vertx.diamond.DiamondZookeeperClusterManager(group, dataId)```, 其中group不提供则使用默认```VertxClusterConfig```.
