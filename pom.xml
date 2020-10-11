@@ -79,7 +79,7 @@
         <vertx.version>3.9.3</vertx.version>
         <ignite.version>2.8.1</ignite.version>
 
-        <lombok.version>1.18.12</lombok.version>
+        <lombok.version>1.18.14</lombok.version>
 
         <junit-jupiter.version>5.7.0</junit-jupiter.version>
         <jmockit.version>1.49</jmockit.version>
