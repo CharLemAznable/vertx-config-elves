@@ -30,7 +30,7 @@
 <dependency>
   <groupId>com.github.charlemaznable</groupId>
   <artifactId>vertx-diamond-config</artifactId>
-  <version>0.0.3</version>
+  <version>0.1.0</version>
 </dependency>
 ```
 
@@ -40,7 +40,7 @@
 <dependency>
   <groupId>com.github.charlemaznable</groupId>
   <artifactId>vertx-diamond-config</artifactId>
-  <version>0.0.4-SNAPSHOT</version>
+  <version>0.1.1-SNAPSHOT</version>
 </dependency>
 ```
 
