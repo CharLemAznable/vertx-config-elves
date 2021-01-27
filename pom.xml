@@ -76,6 +76,7 @@
         <diamond-client.version>0.0.22</diamond-client.version>
         <eql.version>0.1.13</eql.version>
         <vertx.version>3.9.4</vertx.version>
+        <hazelcast.version>3.12.2</hazelcast.version>
         <ignite.version>2.8.1</ignite.version>
 
         <lombok.version>1.18.16</lombok.version>
@@ -126,6 +127,12 @@
             <groupId>io.vertx</groupId>
             <artifactId>vertx-hazelcast</artifactId>
             <version>${vertx.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast</artifactId>
+            <version>${hazelcast.version}</version>
             <optional>true</optional>
         </dependency>
         <dependency>
