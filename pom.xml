@@ -75,7 +75,7 @@
         <slf4j-api.version>1.7.30</slf4j-api.version>
         <diamond-client.version>0.0.22</diamond-client.version>
         <eql.version>0.1.14</eql.version>
-        <vertx.version>3.9.5</vertx.version>
+        <vertx.version>3.9.6</vertx.version>
         <hazelcast.version>3.12.2</hazelcast.version>
         <ignite.version>2.8.1</ignite.version>
 
