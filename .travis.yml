@@ -4,9 +4,10 @@ jdk:
 addons:
   sonarcloud:
     organization: "charlemaznable"
-    token:
-      secure: "F8Qluqp+31uMNjkZxu5gE8K7LEIv+P3YCKWBoA6pkLzbYpTraPdBRczeUnTQzXPQpIQyJafcEHdCqvrChIaJIiTirp+EqnT6niMxusfwQhobkhf3aF9kmAo7ZUeLtoph8osmMlDH+PfirKARWkfYoX8JjkGIZJLj8MCuStMTp3l4uoXFnG2QUgo/2IT3JC7GOzNHPyGHOXOgUL6pOP/E/Vi3PCmk5CVoMEi5ChFtQkd7Gc5kluSl/nE5WFSYiAfhTi8zbQorqOt6jXgg8jd21qG5XK8IMSqZMsmnbVdaaz2G3EUkOJvXbp89hUFEgyfgv0C0mt4Gv2BircKAkQGI6TLDEk/Pk9wDHne4ChuVFF0CnCEsaRSPurmFcOq3RvcAPmf9LPnJ08EloS9yYIisRQ7PXjydx7cd4bwqqhzb9JdkyGq0r0lDfzViu53/+0qMpFVsrVcrFWHMU7ucQwannnPf7VJaZNuby0Vn8SUCvLQvMGZDFSoRNMLH5QoKeuIIzyhcBQZVWppH/emNiLdBQmJuVq7UaHW1ggRTbPf0bZmIeKhUQ/dOMUEyCSz4JwoVWyberfbjWo/prInRt+X7gH7zEyQOhOpOU+qecAJ7WvK4gY4ZEa/jY07Tz15VokSuImk95TtHf/6nf1ea74bxvfTN9BPehsZ00nvT5ezlmF8="
 script:
   - mvn clean verify sonar:sonar -Dsonar.projectKey=CharLemAznable_vertx-diamond-config
+cache:
+  directories:
+    - '$HOME/.sonar/cache'
 after_success:
   - bash <(curl -s https://codecov.io/bash)
