@@ -25,7 +25,6 @@ public class VertxDiamondElfTest {
                 "haEnabled=true\n" +
                 "haGroup=___DEFAULT___\n" +
                 "maxEventLoopExecuteTimeUnit=SECONDS\n" +
-                "eventBusOptions.clustered=yes\n" +
                 "blockedThreadCheckIntervalUnit=SECOND\n");
 
         val configStone = getVertxOptionsStone("DEFAULT");
@@ -37,8 +36,8 @@ public class VertxDiamondElfTest {
         assertTrue(vertxOptions.isHAEnabled());
         assertEquals("___DEFAULT___", vertxOptions.getHAGroup());
         assertEquals(TimeUnit.SECONDS, vertxOptions.getMaxEventLoopExecuteTimeUnit());
-        assertTrue(vertxOptions.getEventBusOptions().isClustered());
         assertNull(vertxOptions.getBlockedThreadCheckIntervalUnit()); // error config SECOND, should be SECONDS
+        assertNull(vertxOptions.getClusterManager());
 
         MockDiamondServer.tearDownMockServer();
     }

@@ -56,7 +56,7 @@
 
 使用Diamond配置```IgniteClusterManager```.
 
-添加Diamond配置```{group: "group, 默认为VertxClusterConfig", dataId: "dataId"}```, 内容为```ignite.xml```文件的内容.
+添加Diamond配置```{group: "group, 默认为VertxClusterConfig", dataId: "dataId"}```, 内容为```ignite.json```文件的内容.
 
 配置VertxOptions添加```clusterManager=@com.github.charlemaznable.vertx.diamond.DiamondIgniteClusterManager(group, dataId)```, 其中group不提供则使用默认```VertxClusterConfig```.
 

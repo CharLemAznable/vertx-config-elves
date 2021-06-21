@@ -41,7 +41,7 @@ public class DiamondHazelcastClusterManagerTest {
                 "<hazelcast xmlns=\"http://www.hazelcast.com/schema/config\"\n" +
                 "           xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n" +
                 "           xsi:schemaLocation=\"http://www.hazelcast.com/schema/config\n" +
-                "           http://www.hazelcast.com/schema/config/hazelcast-config-3.12.xsd\">\n" +
+                "           http://www.hazelcast.com/schema/config/hazelcast-config-4.0.xsd\">\n" +
                 "    <network>\n" +
                 "        <port>6801</port>\n" +
                 "    </network>\n" +
@@ -88,7 +88,7 @@ public class DiamondHazelcastClusterManagerTest {
                 "<hazelcast xmlns=\"http://www.hazelcast.com/schema/config\"\n" +
                 "           xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n" +
                 "           xsi:schemaLocation=\"http://www.hazelcast.com/schema/config\n" +
-                "           http://www.hazelcast.com/schema/config/hazelcast-config-3.12.xsd\">\n" +
+                "           http://www.hazelcast.com/schema/config/hazelcast-config-4.0.xsd\">\n" +
                 "    <network>\n" +
                 "        <port>6801\n" +
                 "    </network>\n" +
