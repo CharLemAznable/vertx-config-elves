@@ -72,16 +72,16 @@
 
         <joor-java-8.version>0.9.14</joor-java-8.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
-        <slf4j-api.version>1.7.31</slf4j-api.version>
+        <slf4j-api.version>1.7.32</slf4j-api.version>
         <diamond-client.version>0.0.22</diamond-client.version>
         <eql.version>0.1.14</eql.version>
-        <vertx.version>4.1.0</vertx.version>
+        <vertx.version>4.2.1</vertx.version>
 
-        <lombok.version>1.18.20</lombok.version>
+        <lombok.version>1.18.22</lombok.version>
 
-        <junit-jupiter.version>5.7.2</junit-jupiter.version>
+        <junit-jupiter.version>5.8.1</junit-jupiter.version>
         <jmockit.version>1.49</jmockit.version>
-        <awaitility.version>4.1.0</awaitility.version>
+        <awaitility.version>4.1.1</awaitility.version>
 
         <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
