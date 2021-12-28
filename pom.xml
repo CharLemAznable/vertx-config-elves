@@ -75,11 +75,11 @@
         <slf4j-api.version>1.7.32</slf4j-api.version>
         <diamond-client.version>0.0.22</diamond-client.version>
         <eql.version>0.1.14</eql.version>
-        <vertx.version>4.2.1</vertx.version>
+        <vertx.version>4.2.3</vertx.version>
 
         <lombok.version>1.18.22</lombok.version>
 
-        <junit-jupiter.version>5.8.1</junit-jupiter.version>
+        <junit-jupiter.version>5.8.2</junit-jupiter.version>
         <jmockit.version>1.49</jmockit.version>
         <awaitility.version>4.1.1</awaitility.version>
 
