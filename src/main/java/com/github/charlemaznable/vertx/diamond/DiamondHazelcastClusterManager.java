@@ -16,7 +16,7 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.startsWithIgnoreCase;
 
 @Slf4j
-public class DiamondHazelcastClusterManager extends HazelcastClusterManager implements ParamsAppliable {
+public final class DiamondHazelcastClusterManager extends HazelcastClusterManager implements ParamsAppliable {
 
     @Override
     public void applyParams(String[] params) {

@@ -12,7 +12,7 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.joor.Reflect.on;
 
 @Slf4j
-public class DiamondIgniteClusterManager extends IgniteClusterManager implements ParamsAppliable {
+public final class DiamondIgniteClusterManager extends IgniteClusterManager implements ParamsAppliable {
 
     @Override
     public void applyParams(String[] params) {

@@ -10,7 +10,7 @@ import static com.github.charlemaznable.vertx.diamond.VertxDiamondElf.getVertxCl
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
 @Slf4j
-public class DiamondZookeeperClusterManager extends ZookeeperClusterManager implements ParamsAppliable {
+public final class DiamondZookeeperClusterManager extends ZookeeperClusterManager implements ParamsAppliable {
 
     @Override
     public void applyParams(String[] params) {
