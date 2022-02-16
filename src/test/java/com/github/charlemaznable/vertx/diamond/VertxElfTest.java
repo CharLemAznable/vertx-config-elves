@@ -38,6 +38,10 @@ public class VertxElfTest {
         assertTrue(vertx2.isClustered());
         closeVertx(vertx2, throwable -> null);
 
+        val vertx3 = buildVertx(clusterOptions);
+        assertTrue(vertx3.isClustered());
+        closeVertx(vertx3);
+
         assertDoesNotThrow(() -> closeVertxImmediately(null));
         assertDoesNotThrow(() -> closeVertx(null));
     }
