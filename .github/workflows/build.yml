@@ -31,7 +31,7 @@ jobs:
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
       - name: Build and analyze
-        run: mvn clean verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=charlemaznable -Dsonar.projectKey=CharLemAznable_vertx-diamond-config
+        run: mvn -B -e -U clean build verify sonar:sonar -Dsonar.projectKey=CharLemAznable_vertx-diamond-config
         env:
           # Needed to get some information about the pull request, if any
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
