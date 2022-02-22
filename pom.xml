@@ -8,7 +8,6 @@
         <groupId>com.github.charlemaznable</groupId>
         <artifactId>char-dependencies</artifactId>
         <version>0.0.6-SNAPSHOT</version>
-        <relativePath/>
     </parent>
 
     <artifactId>vertx-diamond-config</artifactId>
@@ -24,6 +23,26 @@
         <developerConnection>scm:git:https://github.com/CharLemAznable/vertx-diamond-config.git</developerConnection>
         <url>https://github.com/CharLemAznable/vertx-diamond-config</url>
     </scm>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>https://repo1.maven.org/maven2/</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>sonatype</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
