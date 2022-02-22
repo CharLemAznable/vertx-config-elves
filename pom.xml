@@ -8,6 +8,7 @@
         <groupId>com.github.charlemaznable</groupId>
         <artifactId>char-dependencies</artifactId>
         <version>0.0.6-SNAPSHOT</version>
+        <relativePath/>
     </parent>
 
     <artifactId>vertx-diamond-config</artifactId>
