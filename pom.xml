@@ -44,6 +44,10 @@
         </repository>
     </repositories>
 
+    <properties>
+        <sonar.projectKey>CharLemAznable_vertx-diamond-config</sonar.projectKey>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
