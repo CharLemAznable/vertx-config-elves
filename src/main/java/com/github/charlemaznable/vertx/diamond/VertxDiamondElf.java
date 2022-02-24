@@ -12,12 +12,12 @@ import java.util.Objects;
 
 import static lombok.AccessLevel.PRIVATE;
 import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
-import static org.apache.commons.lang3.StringUtils.equalsAnyIgnoreCase;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.math.NumberUtils.toInt;
 import static org.apache.commons.lang3.math.NumberUtils.toLong;
 import static org.n3r.diamond.client.impl.DiamondUtils.parseObject;
 import static org.n3r.diamond.client.impl.DiamondUtils.parseStoneToProperties;
+import static org.n3r.diamond.client.impl.DiamondUtils.toBool;
 
 @NoArgsConstructor(access = PRIVATE)
 public final class VertxDiamondElf {
@@ -69,7 +69,7 @@ public final class VertxDiamondElf {
     }
 
     private static Object parsePrimitive(Class<?> rt, String value) {
-        if (rt == boolean.class) return equalsAnyIgnoreCase(value, "yes", "true", "on", "y");
+        if (rt == boolean.class) return toBool(value);
         if (rt == int.class) return toInt(value);
         if (rt == long.class) return toLong(value);
         return null;
