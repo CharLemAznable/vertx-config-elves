@@ -10,9 +10,9 @@ import org.n3r.diamond.client.cache.ParamsAppliable;
 
 import java.io.ByteArrayInputStream;
 
-import static com.github.charlemaznable.core.lang.Str.isBlank;
 import static com.github.charlemaznable.vertx.diamond.VertxDiamondElf.getVertxClusterConfigStoneByApplyParams;
 import static java.nio.charset.StandardCharsets.UTF_8;
+import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.startsWithIgnoreCase;
 
 @Slf4j
