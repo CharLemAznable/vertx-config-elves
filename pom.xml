@@ -46,30 +46,26 @@
 
     <properties>
         <sonar.projectKey>CharLemAznable_vertx-diamond-config</sonar.projectKey>
+
+        <char-elves.version>0.0.6-SNAPSHOT</char-elves.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jooq</groupId>
-            <artifactId>joor-java-8</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.vertx</groupId>
-            <artifactId>vertx-core</artifactId>
+            <groupId>com.github.charlemaznable</groupId>
+            <artifactId>char-elves</artifactId>
+            <version>${char-elves.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.bingoohuang</groupId>
             <artifactId>diamond-client</artifactId>
         </dependency>
-
+        <!-- dependency for using org.n3r.eql.util.O -->
+        <dependency>
+            <groupId>com.github.bingoohuang</groupId>
+            <artifactId>eql</artifactId>
+            <optional>true</optional>
+        </dependency>
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-hazelcast</artifactId>
@@ -90,22 +86,6 @@
                     <artifactId>slf4j-log4j12</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <!-- dependency for using org.n3r.eql.util.O -->
-        <dependency>
-            <groupId>com.github.bingoohuang</groupId>
-            <artifactId>eql</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.awaitility</groupId>
-            <artifactId>awaitility</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.vertx</groupId>
-            <artifactId>vertx-junit5</artifactId>
         </dependency>
     </dependencies>
 

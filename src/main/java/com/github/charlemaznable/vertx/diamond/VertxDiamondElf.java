@@ -8,8 +8,7 @@ import org.n3r.diamond.client.Miner;
 import org.n3r.eql.util.O;
 import org.n3r.eql.util.O.ValueGettable;
 
-import java.util.Objects;
-
+import static com.github.charlemaznable.core.lang.Str.toStr;
 import static lombok.AccessLevel.PRIVATE;
 import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
 import static org.apache.commons.lang3.StringUtils.equalsAnyIgnoreCase;
@@ -37,7 +36,7 @@ public final class VertxDiamondElf {
 
         val properties = parseStoneToProperties(stone);
         for (val prop : properties.entrySet()) {
-            O.setValue(vertxOptions, Objects.toString(prop.getKey()), new ValueGettable() {
+            O.setValue(vertxOptions, toStr(prop.getKey()), new ValueGettable() {
                 @Override
                 public Object getValue() {
                     return prop.getValue();
@@ -46,7 +45,7 @@ public final class VertxDiamondElf {
                 @SuppressWarnings("unchecked")
                 @Override
                 public Object getValue(Class<?> returnType) {
-                    val value = Objects.toString(prop.getValue());
+                    val value = toStr(prop.getValue());
                     val rt = Primitives.unwrap(returnType);
                     if (rt == String.class) return value;
                     if (rt.isPrimitive()) return parsePrimitive(rt, value);
