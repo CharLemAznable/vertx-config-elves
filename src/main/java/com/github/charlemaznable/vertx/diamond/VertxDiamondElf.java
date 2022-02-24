@@ -8,11 +8,13 @@ import org.n3r.diamond.client.Miner;
 import org.n3r.eql.util.O;
 import org.n3r.eql.util.O.ValueGettable;
 
+import static com.github.charlemaznable.core.lang.Condition.blankThen;
+import static com.github.charlemaznable.core.lang.Str.anyOfIgnoreCase;
+import static com.github.charlemaznable.core.lang.Str.intOf;
+import static com.github.charlemaznable.core.lang.Str.isBlank;
+import static com.github.charlemaznable.core.lang.Str.longOf;
 import static com.github.charlemaznable.core.lang.Str.toStr;
 import static lombok.AccessLevel.PRIVATE;
-import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
-import static org.apache.commons.lang3.StringUtils.equalsAnyIgnoreCase;
-import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.n3r.diamond.client.impl.DiamondUtils.parseObject;
 import static org.n3r.diamond.client.impl.DiamondUtils.parseStoneToProperties;
 
@@ -28,7 +30,7 @@ public final class VertxDiamondElf {
     }
 
     public static String getVertxClusterConfigStone(String group, String dataId) {
-        return new Miner().getStone(defaultIfBlank(group, VERTX_CLUSTER_CONFIG_GROUP_NAME), dataId);
+        return new Miner().getStone(blankThen(group, () -> VERTX_CLUSTER_CONFIG_GROUP_NAME), dataId);
     }
 
     public static VertxOptions parseStoneToVertxOptions(String stone) {
@@ -66,9 +68,9 @@ public final class VertxDiamondElf {
     }
 
     private static Object parsePrimitive(Class<?> rt, String value) {
-        if (rt == boolean.class) return equalsAnyIgnoreCase(value, "yes", "true", "on", "y");
-        if (rt == int.class) return Integer.parseInt(value);
-        if (rt == long.class) return Long.parseLong(value);
+        if (rt == boolean.class) return anyOfIgnoreCase(value, "yes", "true", "on", "y");
+        if (rt == int.class) return intOf(value);
+        if (rt == long.class) return longOf(value);
         return null;
     }
 

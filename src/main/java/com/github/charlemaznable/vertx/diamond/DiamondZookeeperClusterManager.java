@@ -6,8 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.n3r.diamond.client.cache.ParamsAppliable;
 
+import static com.github.charlemaznable.core.lang.Str.isBlank;
 import static com.github.charlemaznable.vertx.diamond.VertxDiamondElf.getVertxClusterConfigStoneByApplyParams;
-import static org.apache.commons.lang3.StringUtils.isBlank;
 
 @Slf4j
 public final class DiamondZookeeperClusterManager extends ZookeeperClusterManager implements ParamsAppliable {
