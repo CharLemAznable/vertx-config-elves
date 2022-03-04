@@ -1,5 +1,6 @@
-package com.github.charlemaznable.vertx.diamond;
+package com.github.charlemaznable.vertx.config;
 
+import com.ctrip.framework.apollo.ConfigService;
 import com.google.common.primitives.Primitives;
 import io.vertx.core.VertxOptions;
 import lombok.NoArgsConstructor;
@@ -11,33 +12,31 @@ import org.n3r.eql.util.O.ValueGettable;
 import java.util.Objects;
 
 import static lombok.AccessLevel.PRIVATE;
-import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
-import static org.apache.commons.lang3.StringUtils.isBlank;
+import static org.apache.commons.lang3.BooleanUtils.toBoolean;
 import static org.apache.commons.lang3.math.NumberUtils.toInt;
 import static org.apache.commons.lang3.math.NumberUtils.toLong;
 import static org.n3r.diamond.client.impl.DiamondUtils.parseObject;
 import static org.n3r.diamond.client.impl.DiamondUtils.parseStoneToProperties;
-import static org.n3r.diamond.client.impl.DiamondUtils.toBool;
 
 @NoArgsConstructor(access = PRIVATE)
-public final class VertxDiamondElf {
+public final class VertxOptionsConfigElf {
 
-    public static final String VERTX_OPTIONS_GROUP_NAME = "VertxOptions";
+    public static final String VERTX_OPTIONS_APOLLO_NAMESPACE = "VertxOptions";
+    public static final String VERTX_OPTIONS_DIAMOND_GROUP_NAME = "VertxOptions";
 
-    public static final String VERTX_CLUSTER_CONFIG_GROUP_NAME = "VertxClusterConfig";
-
-    public static String getVertxOptionsStone(String dataId) {
-        return new Miner().getStone(VERTX_OPTIONS_GROUP_NAME, dataId);
+    public static String getApolloProperty(String propertyName) {
+        return ConfigService.getConfig(VERTX_OPTIONS_APOLLO_NAMESPACE)
+                .getProperty(propertyName, "");
     }
 
-    public static String getVertxClusterConfigStone(String group, String dataId) {
-        return new Miner().getStone(defaultIfBlank(group, VERTX_CLUSTER_CONFIG_GROUP_NAME), dataId);
+    public static String getDiamondStone(String dataId) {
+        return new Miner().getStone(VERTX_OPTIONS_DIAMOND_GROUP_NAME, dataId);
     }
 
-    public static VertxOptions parseStoneToVertxOptions(String stone) {
+    public static VertxOptions parseConfigValueToVertxOptions(String value) {
         val vertxOptions = new VertxOptions();
 
-        val properties = parseStoneToProperties(stone);
+        val properties = parseStoneToProperties(value);
         for (val prop : properties.entrySet()) {
             O.setValue(vertxOptions, Objects.toString(prop.getKey()), new ValueGettable() {
                 @Override
@@ -69,27 +68,9 @@ public final class VertxDiamondElf {
     }
 
     private static Object parsePrimitive(Class<?> rt, String value) {
-        if (rt == boolean.class) return toBool(value);
+        if (rt == boolean.class) return toBoolean(value);
         if (rt == int.class) return toInt(value);
         if (rt == long.class) return toLong(value);
         return null;
-    }
-
-    static String getVertxClusterConfigStoneByApplyParams(String[] params) {
-        String group = null;
-        String dataId = null;
-
-        if (params.length == 2) {
-            // @DiamondHazelcastClusterManager(group, dataId)
-            group = params[0];
-            dataId = params[1];
-        } else if (params.length == 1) {
-            // @DiamondHazelcastClusterManager(dataId)
-            dataId = params[0];
-        }
-        // @DiamondHazelcastClusterManager() or error params
-        if (isBlank(dataId)) return null;
-
-        return getVertxClusterConfigStone(group, dataId);
     }
 }
