@@ -21,7 +21,7 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=CharLemAznable_vertx-config-elves&metric=coverage)](https://sonarcloud.io/dashboard?id=CharLemAznable_vertx-config-elves)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=CharLemAznable_vertx-config-elves&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=CharLemAznable_vertx-config-elves)
 
-使用Diamond配置Vert.x.
+使用Apollo/Diamond配置Vert.x.
 
 ##### Maven Dependency
 
@@ -43,7 +43,8 @@
 
 添加Diamond配置```{group: "group, 默认为VertxClusterConfig", dataId: "dataId"}```, 内容为```cluster.xml```或```cluster.yaml```文件的内容.
 
-配置VertxOptions添加```clusterManager=@com.github.charlemaznable.vertx.diamond.DiamondHazelcastClusterManager(group, dataId)```, 其中group不提供则使用默认```VertxClusterConfig```.
+配置VertxOptions添加```clusterManager=@com.github.charlemaznable.vertx.config.DiamondHazelcastClusterManager(group, dataId)```, 其中group不提供则使用默认```VertxClusterConfig```.
+
 
 ##### DiamondIgniteClusterManager
 
@@ -51,7 +52,8 @@
 
 添加Diamond配置```{group: "group, 默认为VertxClusterConfig", dataId: "dataId"}```, 内容为```ignite.json```文件的内容.
 
-配置VertxOptions添加```clusterManager=@com.github.charlemaznable.vertx.diamond.DiamondIgniteClusterManager(group, dataId)```, 其中group不提供则使用默认```VertxClusterConfig```.
+配置VertxOptions添加```clusterManager=@com.github.charlemaznable.vertx.config.DiamondIgniteClusterManager(group, dataId)```, 其中group不提供则使用默认```VertxClusterConfig```.
+
 
 ##### DiamondZookeeperClusterManager
 
@@ -59,4 +61,31 @@
 
 添加Diamond配置```{group: "group, 默认为VertxClusterConfig", dataId: "dataId"}```, 内容为```zookeeper.json```文件的内容.
 
-配置VertxOptions添加```clusterManager=@com.github.charlemaznable.vertx.diamond.DiamondZookeeperClusterManager(group, dataId)```, 其中group不提供则使用默认```VertxClusterConfig```.
+配置VertxOptions添加```clusterManager=@com.github.charlemaznable.vertx.config.DiamondZookeeperClusterManager(group, dataId)```, 其中group不提供则使用默认```VertxClusterConfig```.
+
+
+##### ApolloHazelcastClusterManager
+
+使用Apollo配置```HazelcastClusterManager```.
+
+添加Apollo配置```{namespace: "namespace, 默认为VertxClusterConfig", propertyName: "propertyName"}```, 内容为```cluster.xml```或```cluster.yaml```文件的内容.
+
+配置VertxOptions添加```clusterManager=@com.github.charlemaznable.vertx.config.ApolloHazelcastClusterManager(namespace, propertyName)```, 其中namespace不提供则使用默认```VertxClusterConfig```.
+
+
+##### ApolloIgniteClusterManager
+
+使用Apollo配置```IgniteClusterManager```.
+
+添加Apollo配置```{namespace: "namespace, 默认为VertxClusterConfig", propertyName: "propertyName"}```, 内容为```ignite.json```文件的内容.
+
+配置VertxOptions添加```clusterManager=@com.github.charlemaznable.vertx.config.ApolloIgniteClusterManager(namespace, propertyName)```, 其中namespace不提供则使用默认```VertxClusterConfig```.
+
+
+##### ApolloZookeeperClusterManager
+
+使用Apollo配置```ZookeeperClusterManager```.
+
+添加Apollo配置```{namespace: "namespace, 默认为VertxClusterConfig", propertyName: "propertyName"}```, 内容为```zookeeper.json```文件的内容.
+
+配置VertxOptions添加```clusterManager=@com.github.charlemaznable.vertx.config.ApolloZookeeperClusterManager(namespace, propertyName)```, 其中namespace不提供则使用默认```VertxClusterConfig```.
