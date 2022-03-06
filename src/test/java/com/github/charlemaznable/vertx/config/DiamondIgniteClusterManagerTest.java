@@ -5,10 +5,10 @@ import lombok.val;
 import org.junit.jupiter.api.Test;
 import org.n3r.diamond.client.impl.MockDiamondServer;
 
+import static com.github.charlemaznable.core.vertx.VertxElf.parseStringToVertxOptions;
 import static com.github.charlemaznable.vertx.config.VertxClusterConfigElf.VERTX_CLUSTER_CONFIG_DIAMOND_GROUP_NAME;
 import static com.github.charlemaznable.vertx.config.VertxOptionsConfigElf.VERTX_OPTIONS_DIAMOND_GROUP_NAME;
 import static com.github.charlemaznable.vertx.config.VertxOptionsConfigElf.getDiamondStone;
-import static com.github.charlemaznable.vertx.config.VertxOptionsConfigElf.parseConfigValueToVertxOptions;
 
 public class DiamondIgniteClusterManagerTest extends IgniteClusterManagerTest {
 
@@ -18,12 +18,12 @@ public class DiamondIgniteClusterManagerTest extends IgniteClusterManagerTest {
 
         MockDiamondServer.setConfigInfo(VERTX_OPTIONS_DIAMOND_GROUP_NAME, "ignite", "" +
                 "clusterManager=@com.github.charlemaznable.vertx.config.DiamondIgniteClusterManager");
-        val ignite = parseConfigValueToVertxOptions(getDiamondStone("ignite"));
+        val ignite = parseStringToVertxOptions(getDiamondStone("ignite"));
         assertIgnite(ignite);
 
         MockDiamondServer.setConfigInfo(VERTX_OPTIONS_DIAMOND_GROUP_NAME, "ignite0", "" +
                 "clusterManager=@com.github.charlemaznable.vertx.config.DiamondIgniteClusterManager()");
-        val ignite0 = parseConfigValueToVertxOptions(getDiamondStone("ignite0"));
+        val ignite0 = parseStringToVertxOptions(getDiamondStone("ignite0"));
         assertIgnite0(ignite0);
 
         MockDiamondServer.setConfigInfo(VERTX_OPTIONS_DIAMOND_GROUP_NAME, "ignite1", "" +
@@ -32,7 +32,7 @@ public class DiamondIgniteClusterManagerTest extends IgniteClusterManagerTest {
                 "{\n" +
                 "  \"localPort\":47101\n" +
                 "}");
-        val ignite1 = parseConfigValueToVertxOptions(getDiamondStone("ignite1"));
+        val ignite1 = parseStringToVertxOptions(getDiamondStone("ignite1"));
         assertIgnite1(ignite1);
 
         MockDiamondServer.tearDownMockServer();
@@ -44,7 +44,7 @@ public class DiamondIgniteClusterManagerTest extends IgniteClusterManagerTest {
 
         MockDiamondServer.setConfigInfo(VERTX_OPTIONS_DIAMOND_GROUP_NAME, "igniteNone", "" +
                 "clusterManager=@com.github.charlemaznable.vertx.config.DiamondIgniteClusterManager(igniteNotExists)");
-        val igniteNone = parseConfigValueToVertxOptions(getDiamondStone("igniteNone"));
+        val igniteNone = parseStringToVertxOptions(getDiamondStone("igniteNone"));
         assertIgniteNone(igniteNone);
 
         MockDiamondServer.setConfigInfo(VERTX_OPTIONS_DIAMOND_GROUP_NAME, "igniteError", "" +
@@ -54,7 +54,7 @@ public class DiamondIgniteClusterManagerTest extends IgniteClusterManagerTest {
                 "  \"localPort\":47101,\n" +
                 "  \"discoveryOptions\":" +
                 "}");
-        val igniteError = parseConfigValueToVertxOptions(getDiamondStone("igniteError"));
+        val igniteError = parseStringToVertxOptions(getDiamondStone("igniteError"));
         assertIgniteError(igniteError);
 
         MockDiamondServer.tearDownMockServer();

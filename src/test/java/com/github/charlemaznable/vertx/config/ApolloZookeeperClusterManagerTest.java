@@ -5,8 +5,8 @@ import com.github.charlemaznable.vertx.common.ZookeeperClusterManagerTest;
 import lombok.val;
 import org.junit.jupiter.api.Test;
 
+import static com.github.charlemaznable.core.vertx.VertxElf.parseStringToVertxOptions;
 import static com.github.charlemaznable.vertx.config.VertxOptionsConfigElf.getApolloProperty;
-import static com.github.charlemaznable.vertx.config.VertxOptionsConfigElf.parseConfigValueToVertxOptions;
 
 public class ApolloZookeeperClusterManagerTest extends ZookeeperClusterManagerTest {
 
@@ -14,13 +14,13 @@ public class ApolloZookeeperClusterManagerTest extends ZookeeperClusterManagerTe
     public void testApolloZookeeperClusterManager() {
         MockApolloServer.setUpMockServer();
 
-        val zookeeper = parseConfigValueToVertxOptions(getApolloProperty("zookeeper"));
+        val zookeeper = parseStringToVertxOptions(getApolloProperty("zookeeper"));
         assertZookeeper(zookeeper);
 
-        val zookeeper0 = parseConfigValueToVertxOptions(getApolloProperty("zookeeper0"));
+        val zookeeper0 = parseStringToVertxOptions(getApolloProperty("zookeeper0"));
         assertZookeeper0(zookeeper0);
 
-        val zookeeper1 = parseConfigValueToVertxOptions(getApolloProperty("zookeeper1"));
+        val zookeeper1 = parseStringToVertxOptions(getApolloProperty("zookeeper1"));
         assertZookeeper1(zookeeper1);
 
         MockApolloServer.tearDownMockServer();
@@ -30,10 +30,10 @@ public class ApolloZookeeperClusterManagerTest extends ZookeeperClusterManagerTe
     public void testApolloZookeeperClusterManagerError() {
         MockApolloServer.setUpMockServer();
 
-        val zookeeperNone = parseConfigValueToVertxOptions(getApolloProperty("zookeeperNone"));
+        val zookeeperNone = parseStringToVertxOptions(getApolloProperty("zookeeperNone"));
         assertZookeeperNone(zookeeperNone);
 
-        val zookeeperError = parseConfigValueToVertxOptions(getApolloProperty("zookeeperError"));
+        val zookeeperError = parseStringToVertxOptions(getApolloProperty("zookeeperError"));
         assertZookeeperError(zookeeperError);
 
         MockApolloServer.tearDownMockServer();

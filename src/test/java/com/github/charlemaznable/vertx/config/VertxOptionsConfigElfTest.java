@@ -7,10 +7,10 @@ import org.n3r.diamond.client.impl.MockDiamondServer;
 
 import java.util.concurrent.TimeUnit;
 
+import static com.github.charlemaznable.core.vertx.VertxElf.parseStringToVertxOptions;
 import static com.github.charlemaznable.vertx.config.VertxOptionsConfigElf.VERTX_OPTIONS_DIAMOND_GROUP_NAME;
 import static com.github.charlemaznable.vertx.config.VertxOptionsConfigElf.getApolloProperty;
 import static com.github.charlemaznable.vertx.config.VertxOptionsConfigElf.getDiamondStone;
-import static com.github.charlemaznable.vertx.config.VertxOptionsConfigElf.parseConfigValueToVertxOptions;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -47,7 +47,7 @@ public class VertxOptionsConfigElfTest {
 
     private void assertConfigValue(String configValue) {
         assertNotNull(configValue);
-        val vertxOptions = parseConfigValueToVertxOptions(configValue);
+        val vertxOptions = parseStringToVertxOptions(configValue);
         assertEquals(2, vertxOptions.getEventLoopPoolSize());
         assertEquals(5, vertxOptions.getMaxEventLoopExecuteTime());
         assertTrue(vertxOptions.isHAEnabled());
