@@ -1,7 +1,7 @@
 package com.github.charlemaznable.vertx.common;
 
+import com.github.charlemaznable.core.lang.Objectt.ParamsAppliable;
 import lombok.val;
-import org.n3r.diamond.client.cache.ParamsAppliable;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
