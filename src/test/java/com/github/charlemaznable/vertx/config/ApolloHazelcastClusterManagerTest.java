@@ -1,29 +1,28 @@
 package com.github.charlemaznable.vertx.config;
 
 import com.github.charlemaznable.apollo.MockApolloServer;
+import com.github.charlemaznable.vertx.common.ApolloPropertyTest;
 import com.github.charlemaznable.vertx.common.HazelcastClusterManagerTest;
 import lombok.val;
 import org.junit.jupiter.api.Test;
 
-import static com.github.charlemaznable.core.vertx.VertxElf.parseStringToVertxOptions;
-import static com.github.charlemaznable.vertx.config.VertxOptionsConfigElf.getApolloProperty;
-
-public class ApolloHazelcastClusterManagerTest extends HazelcastClusterManagerTest {
+public class ApolloHazelcastClusterManagerTest
+        extends HazelcastClusterManagerTest implements ApolloPropertyTest {
 
     @Test
     public void testApolloHazelcastClusterManager() {
         MockApolloServer.setUpMockServer();
 
-        val hazelcast = parseStringToVertxOptions(getApolloProperty("hazelcast"));
+        val hazelcast = parseApolloProperty("hazelcast");
         assertHazelcast(hazelcast);
 
-        val hazelcast0 = parseStringToVertxOptions(getApolloProperty("hazelcast0"));
+        val hazelcast0 = parseApolloProperty("hazelcast0");
         assertHazelcast0(hazelcast0);
 
-        val hazelcast1 = parseStringToVertxOptions(getApolloProperty("hazelcast1"));
+        val hazelcast1 = parseApolloProperty("hazelcast1");
         assertHazelcast1(hazelcast1);
 
-        val hazelcast2 = parseStringToVertxOptions(getApolloProperty("hazelcast2"));
+        val hazelcast2 = parseApolloProperty("hazelcast2");
         assertHazelcast2(hazelcast2);
 
         MockApolloServer.tearDownMockServer();
@@ -33,10 +32,10 @@ public class ApolloHazelcastClusterManagerTest extends HazelcastClusterManagerTe
     public void testApolloHazelcastClusterManagerError() {
         MockApolloServer.setUpMockServer();
 
-        val hazelcastNone = parseStringToVertxOptions(getApolloProperty("hazelcastNone"));
+        val hazelcastNone = parseApolloProperty("hazelcastNone");
         assertHazelcastNone(hazelcastNone);
 
-        val hazelcastError = parseStringToVertxOptions(getApolloProperty("hazelcastError"));
+        val hazelcastError = parseApolloProperty("hazelcastError");
         assertHazelcastError(hazelcastError);
 
         MockApolloServer.tearDownMockServer();

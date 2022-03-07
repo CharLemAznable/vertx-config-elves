@@ -1,16 +1,16 @@
 package com.github.charlemaznable.vertx.config;
 
+import com.github.charlemaznable.vertx.common.DiamondStoneTest;
 import com.github.charlemaznable.vertx.common.HazelcastClusterManagerTest;
 import lombok.val;
 import org.junit.jupiter.api.Test;
 import org.n3r.diamond.client.impl.MockDiamondServer;
 
-import static com.github.charlemaznable.core.vertx.VertxElf.parseStringToVertxOptions;
 import static com.github.charlemaznable.vertx.config.VertxClusterConfigElf.VERTX_CLUSTER_CONFIG_DIAMOND_GROUP_NAME;
 import static com.github.charlemaznable.vertx.config.VertxOptionsConfigElf.VERTX_OPTIONS_DIAMOND_GROUP_NAME;
-import static com.github.charlemaznable.vertx.config.VertxOptionsConfigElf.getDiamondStone;
 
-public class DiamondHazelcastClusterManagerTest extends HazelcastClusterManagerTest {
+public class DiamondHazelcastClusterManagerTest
+        extends HazelcastClusterManagerTest implements DiamondStoneTest {
 
     @Test
     public void testDiamondHazelcastClusterManager() {
@@ -18,12 +18,12 @@ public class DiamondHazelcastClusterManagerTest extends HazelcastClusterManagerT
 
         MockDiamondServer.setConfigInfo(VERTX_OPTIONS_DIAMOND_GROUP_NAME, "hazelcast", "" +
                 "clusterManager=@com.github.charlemaznable.vertx.config.DiamondHazelcastClusterManager");
-        val hazelcast = parseStringToVertxOptions(getDiamondStone("hazelcast"));
+        val hazelcast = parseDiamondStone("hazelcast");
         assertHazelcast(hazelcast);
 
         MockDiamondServer.setConfigInfo(VERTX_OPTIONS_DIAMOND_GROUP_NAME, "hazelcast0", "" +
                 "clusterManager=@com.github.charlemaznable.vertx.config.DiamondHazelcastClusterManager()");
-        val hazelcast0 = parseStringToVertxOptions(getDiamondStone("hazelcast0"));
+        val hazelcast0 = parseDiamondStone("hazelcast0");
         assertHazelcast0(hazelcast0);
 
         MockDiamondServer.setConfigInfo(VERTX_OPTIONS_DIAMOND_GROUP_NAME, "hazelcast1", "" +
@@ -38,7 +38,7 @@ public class DiamondHazelcastClusterManagerTest extends HazelcastClusterManagerT
                 "        <port>6801</port>\n" +
                 "    </network>\n" +
                 "</hazelcast>\n");
-        val hazelcast1 = parseStringToVertxOptions(getDiamondStone("hazelcast1"));
+        val hazelcast1 = parseDiamondStone("hazelcast1");
         assertHazelcast1(hazelcast1);
 
         MockDiamondServer.setConfigInfo(VERTX_OPTIONS_DIAMOND_GROUP_NAME, "hazelcast2", "" +
@@ -48,7 +48,7 @@ public class DiamondHazelcastClusterManagerTest extends HazelcastClusterManagerT
                 "  network:\n" +
                 "    port:\n" +
                 "      port: 7901\n");
-        val hazelcast2 = parseStringToVertxOptions(getDiamondStone("hazelcast2"));
+        val hazelcast2 = parseDiamondStone("hazelcast2");
         assertHazelcast2(hazelcast2);
 
         MockDiamondServer.tearDownMockServer();
@@ -60,7 +60,7 @@ public class DiamondHazelcastClusterManagerTest extends HazelcastClusterManagerT
 
         MockDiamondServer.setConfigInfo(VERTX_OPTIONS_DIAMOND_GROUP_NAME, "hazelcastNone", "" +
                 "clusterManager=@com.github.charlemaznable.vertx.config.DiamondHazelcastClusterManager(hazelcastNotExists)");
-        val hazelcastNone = parseStringToVertxOptions(getDiamondStone("hazelcastNone"));
+        val hazelcastNone = parseDiamondStone("hazelcastNone");
         assertHazelcastNone(hazelcastNone);
 
         MockDiamondServer.setConfigInfo(VERTX_OPTIONS_DIAMOND_GROUP_NAME, "hazelcastError", "" +
@@ -75,7 +75,7 @@ public class DiamondHazelcastClusterManagerTest extends HazelcastClusterManagerT
                 "        <port>6801\n" +
                 "    </network>\n" +
                 "</hazelcast>\n");
-        val hazelcastError = parseStringToVertxOptions(getDiamondStone("hazelcastError"));
+        val hazelcastError = parseDiamondStone("hazelcastError");
         assertHazelcastError(hazelcastError);
 
         MockDiamondServer.tearDownMockServer();
