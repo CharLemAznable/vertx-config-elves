@@ -28,10 +28,10 @@ public class DiamondIgniteClusterManagerTest
 
         MockDiamondServer.setConfigInfo(VERTX_OPTIONS_DIAMOND_GROUP_NAME, "ignite1", "" +
                 "clusterManager=@com.github.charlemaznable.vertx.config.DiamondIgniteClusterManager(igniteJson)");
-        MockDiamondServer.setConfigInfo(VERTX_CLUSTER_CONFIG_DIAMOND_GROUP_NAME, "igniteJson", "" +
-                "{\n" +
-                "  \"localPort\":47101\n" +
-                "}");
+        MockDiamondServer.setConfigInfo(VERTX_CLUSTER_CONFIG_DIAMOND_GROUP_NAME, "igniteJson", """
+                {
+                  "localPort":47101
+                }""");
         val ignite1 = parseDiamondStone("ignite1");
         assertIgnite1(ignite1);
 
@@ -49,11 +49,11 @@ public class DiamondIgniteClusterManagerTest
 
         MockDiamondServer.setConfigInfo(VERTX_OPTIONS_DIAMOND_GROUP_NAME, "igniteError", "" +
                 "clusterManager=@com.github.charlemaznable.vertx.config.DiamondIgniteClusterManager(igniteJsonError)");
-        MockDiamondServer.setConfigInfo(VERTX_CLUSTER_CONFIG_DIAMOND_GROUP_NAME, "igniteJsonError", "" +
-                "{\n" +
-                "  \"localPort\":47101,\n" +
-                "  \"discoveryOptions\":" +
-                "}");
+        MockDiamondServer.setConfigInfo(VERTX_CLUSTER_CONFIG_DIAMOND_GROUP_NAME, "igniteJsonError", """
+                {
+                  "localPort":47101,
+                  "discoveryOptions":
+                }""");
         val igniteError = parseDiamondStone("igniteError");
         assertIgniteError(igniteError);
 

@@ -32,13 +32,14 @@ public class VertxOptionsConfigElfTest {
     @Test
     public void testVertxOptionsConfigElfInDiamond() {
         MockDiamondServer.setUpMockServer();
-        MockDiamondServer.setConfigInfo(VERTX_OPTIONS_DIAMOND_GROUP_NAME, "DEFAULT", "" +
-                "eventLoopPoolSize=2\n" +
-                "maxEventLoopExecuteTime=5\n" +
-                "haEnabled=true\n" +
-                "haGroup=___DEFAULT___\n" +
-                "maxEventLoopExecuteTimeUnit=SECONDS\n" +
-                "blockedThreadCheckIntervalUnit=SECOND\n");
+        MockDiamondServer.setConfigInfo(VERTX_OPTIONS_DIAMOND_GROUP_NAME, "DEFAULT", """
+                eventLoopPoolSize=2
+                maxEventLoopExecuteTime=5
+                haEnabled=true
+                haGroup=___DEFAULT___
+                maxEventLoopExecuteTimeUnit=SECONDS
+                blockedThreadCheckIntervalUnit=SECOND
+                """);
 
         val configStone = getDiamondStone("DEFAULT");
         assertConfigValue(configStone);

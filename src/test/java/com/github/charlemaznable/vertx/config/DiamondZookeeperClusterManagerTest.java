@@ -46,17 +46,17 @@ public class DiamondZookeeperClusterManagerTest
 
         MockDiamondServer.setConfigInfo(VERTX_OPTIONS_DIAMOND_GROUP_NAME, "zookeeperError", "" +
                 "clusterManager=@com.github.charlemaznable.vertx.config.DiamondZookeeperClusterManager(zookeeperJsonError)");
-        MockDiamondServer.setConfigInfo(VERTX_CLUSTER_CONFIG_DIAMOND_GROUP_NAME, "zookeeperJsonError", "" +
-                "{\n" +
-                "  \"zookeeperHosts\":\"127.0.0.1\",\n" +
-                "  \"sessionTimeout\":20000,\n" +
-                "  \"connectTimeout\":3000,\n" +
-                "  \"rootPath\":\"io.vertx\",\n" +
-                "  \"retry\": \n" +
-                "    \"initialSleepTime\":100,\n" +
-                "    \"intervalTimes\":10000,\n" +
-                "    \"maxTimes\":5\n" +
-                "}");
+        MockDiamondServer.setConfigInfo(VERTX_CLUSTER_CONFIG_DIAMOND_GROUP_NAME, "zookeeperJsonError", """
+                {
+                  "zookeeperHosts":"127.0.0.1",
+                  "sessionTimeout":20000,
+                  "connectTimeout":3000,
+                  "rootPath":"io.vertx",
+                  "retry":\s
+                  "initialSleepTime":100,
+                  "intervalTimes":10000,
+                  "maxTimes":5
+                }""");
         val zookeeperError = parseDiamondStone("zookeeperError");
         assertZookeeperError(zookeeperError);
 

@@ -10,32 +10,32 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public abstract class ZookeeperClusterManagerTest {
 
-    protected static final String DEFAULT_ZOOKEEPER_JSON = "" +
-            "{\n" +
-            "  \"zookeeperHosts\":\"127.0.0.1\",\n" +
-            "  \"sessionTimeout\":20000,\n" +
-            "  \"connectTimeout\":3000,\n" +
-            "  \"rootPath\":\"io.vertx\",\n" +
-            "  \"retry\": {\n" +
-            "    \"initialSleepTime\":100,\n" +
-            "    \"intervalTimes\":10000,\n" +
-            "    \"maxTimes\":5\n" +
-            "  }\n" +
-            "}";
+    protected static final String DEFAULT_ZOOKEEPER_JSON = """
+            {
+              "zookeeperHosts":"127.0.0.1",
+              "sessionTimeout":20000,
+              "connectTimeout":3000,
+              "rootPath":"io.vertx",
+              "retry": {
+                "initialSleepTime":100,
+                "intervalTimes":10000,
+                "maxTimes":5
+              }
+            }""";
     protected static final JsonObject DEFAULT_ZOOKEEPER_JSON_OBJECT = new JsonObject(DEFAULT_ZOOKEEPER_JSON);
 
-    protected static final String CUSTOM_ZOOKEEPER_JSON = "" +
-            "{\n" +
-            "  \"zookeeperHosts\":\"192.168.0.1\",\n" +
-            "  \"sessionTimeout\":10000,\n" +
-            "  \"connectTimeout\":2000,\n" +
-            "  \"rootPath\":\"io.vertx.custom\",\n" +
-            "  \"retry\": {\n" +
-            "    \"initialSleepTime\":200,\n" +
-            "    \"intervalTimes\":15000,\n" +
-            "    \"maxTimes\":10\n" +
-            "  }\n" +
-            "}";
+    protected static final String CUSTOM_ZOOKEEPER_JSON = """
+            {
+              "zookeeperHosts":"192.168.0.1",
+              "sessionTimeout":10000,
+              "connectTimeout":2000,
+              "rootPath":"io.vertx.custom",
+              "retry": {
+                "initialSleepTime":200,
+                "intervalTimes":15000,
+                "maxTimes":10
+              }
+            }""";
     protected static final JsonObject CUSTOM_ZOOKEEPER_JSON_OBJECT = new JsonObject(CUSTOM_ZOOKEEPER_JSON);
 
     protected void assertZookeeper(VertxOptions zookeeper) {
