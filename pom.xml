@@ -62,12 +62,6 @@
             <groupId>com.github.bingoohuang</groupId>
             <artifactId>diamond-client</artifactId>
             <optional>true</optional>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.jooq</groupId>
-                    <artifactId>joor-java-8</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.github.charlemaznable</groupId>
